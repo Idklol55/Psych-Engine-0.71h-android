@@ -448,9 +448,9 @@ class StoryMenuState extends MusicBeatState
 			bgSprite.visible = false;
 		} else {
 			if (curDifficulty == 1)
-				bgSprite.loadGraphic(Paths.image('menubackgrounds/menu_stageCH));
+				bgSprite.loadGraphic(Paths.image('menubackgrounds/menu_stageCH'));
 			else
-				bgSprite.loadGraphic(Paths.image('menubackgrounds/menu_stageCH));
+				bgSprite.loadGraphic(Paths.image('menubackgrounds/menu_stage'));
 		}
 
 		var weekArray:Array<String> = loadedWeeks[curWeek].weekCharacters;
