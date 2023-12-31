@@ -377,6 +377,7 @@ class StoryMenuState extends MusicBeatState
 		#if !switch
 		intendedScore = Highscore.getWeekScore(loadedWeeks[curWeek].fileName, curDifficulty);
 		#end
+		updateImages();
 	}
 
 	var lerpScore:Int = 0;
@@ -435,6 +436,27 @@ class StoryMenuState extends MusicBeatState
 			curDifficulty = newPos;
 		}
 		updateText();
+		updateImages();
+	}
+
+	function updateImages() {
+		var leWeek:WeekData = WeekData.weeksLoaded.get(WeekData.weeksList[curWeek]);
+
+		bgSprite.visible = true;
+		var assetName:String = leWeek.weekBackground;
+		if(assetName == null || assetName.length < 1) {
+			bgSprite.visible = false;
+		} else {
+			if (curDifficulty == 1)
+				bgSprite.loadGraphic(Paths.image('menubackgrounds/menu_stageCH));
+			else
+				bgSprite.loadGraphic(Paths.image('menubackgrounds/menu_stageCH));
+		}
+
+		var weekArray:Array<String> = loadedWeeks[curWeek].weekCharacters;
+		for (i in 0...grpWeekCharacters.length) {
+			grpWeekCharacters.members[i].changeCharacter(weekArray[i], curDifficulty);
+		}
 	}
 
 	function weekIsLocked(name:String):Bool {
